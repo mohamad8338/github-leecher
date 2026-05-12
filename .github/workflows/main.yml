@@ -38,7 +38,7 @@ on:
           حداکثر حجم هر تکه (مگابایت)
         required: false
         type: choice
-        default: '95'
+        default: '95  (حداکثر - برای فایل‌های حجیم)'
         options:
           - '25  (اینترنت ضعیف - فایل‌های کوچک)'
           - '50  (متوسط)'
@@ -53,8 +53,9 @@ permissions:
   contents: write
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: sci-hub-queue
   cancel-in-progress: false
+  queue: max
 
 jobs:
   leech-split-file:
